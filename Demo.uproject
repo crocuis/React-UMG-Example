@@ -1,0 +1,12 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{C1971CEE-45E6-3313-6DE8-579772AC8C0F}",
+	"Category": "",
+	"Description": "",
+	"Plugins": [
+		{
+			"Name": "AdditionalWindow",
+			"Enabled": true
+		}
+	]
+}
