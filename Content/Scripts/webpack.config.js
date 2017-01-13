@@ -42,7 +42,14 @@ var config = {
     root: path.resolve('./src'),
     extensions: ['', '.js', '.jsx']
   },
-  plugins: [...plugins, new NpmInstallPlugin()]
+  plugins: [...plugins, 
+            new NpmInstallPlugin(),
+            new webpack.DefinePlugin({
+              'process.env': {
+                NODE_ENV: JSON.stringify('production')
+              }
+            })
+           ]
 };
 
 module.exports = config;
