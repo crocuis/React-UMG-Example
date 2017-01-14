@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 export default class Counter extends Component {
+    shouldComponentUpdate(newProps) {
+        return this.props.counter !== newProps.counter;
+    }
     render() {
         const { increment, decrement, counter } = this.props;
         return (

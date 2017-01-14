@@ -6,10 +6,8 @@ import AddCounter from '../components/AddCounter'
 import DelCounter from '../components/DelCounter'
 import bindIndexToActionCreators from '../stores/bindIndexToActionCreators'
 import * as CounterActions from '../actions/CounterActions';
-import _ from "lodash";
 
-const counterDispatchProperties =
-  index =>
+const counterDispatchProperties = index =>
     dispatch => bindActionCreators(
         bindIndexToActionCreators(CounterActions, index),
       dispatch)
@@ -29,6 +27,12 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class CounterApp extends Component {
+    shouldComponentUpdate(newProps) {
+        return this.props.counters.find((target, i) => {
+            return newProps.counters[i] == target
+        })
+    }
+
     render() {
         const { counters, dispatch, addCounter, delCounter } = this.props;
         return (

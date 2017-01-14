@@ -1,11 +1,9 @@
 import counterReducer, { INITIAL_STATE as COUNTER_INITIAL_STATE } from './counter'
 import { INCREMENT_COUNTER, DECREMENT_COUNTER, ADD_COUNTER, DEL_COUNTER } from '../constants/ActionTypes';
+import _ from 'lodash'
 
-const INITIAL_STATE = [
-  COUNTER_INITIAL_STATE,
-  COUNTER_INITIAL_STATE,
-  COUNTER_INITIAL_STATE
-]
+const INITIAL_STATE = _.range(5).map(t => COUNTER_INITIAL_STATE)
+
 const reducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case INCREMENT_COUNTER:
@@ -15,7 +13,6 @@ const reducer = (state = INITIAL_STATE, action) => {
             counterReducer(state[action.index], action),
             ...state.slice(action.index + 1)
             ]
-            break;
         case ADD_COUNTER:
             state = [...state, COUNTER_INITIAL_STATE]    
             break;
